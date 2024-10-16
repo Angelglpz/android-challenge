@@ -1,20 +1,14 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt)
-    kotlin("kapt")
 }
 
 android {
-    namespace = "com.idealista.idealistachallenge"
-    compileSdk = 34
+    namespace = "com.idealista.presentation"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.idealista.idealistachallenge"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "0.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,15 +30,15 @@ android {
         jvmTarget = "1.8"
     }
 
-    kapt {
-        correctErrorTypes = true
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.2"
     }
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":presentation"))
     implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
@@ -54,8 +48,20 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // DI
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    // Compose
+    val composeBom = platform(libs.androidx.compose.bom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+
+    implementation(libs.androidx.core.splashscreen)
+
+    // Views/Fragments integration
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 }
