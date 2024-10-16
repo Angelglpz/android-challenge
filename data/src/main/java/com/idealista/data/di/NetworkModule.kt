@@ -24,7 +24,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesAdApiService(retrofit: Retrofit): AdApiService {
+    internal fun providesAdApiService(retrofit: Retrofit): AdApiService {
         return retrofit.create(AdApiService::class.java)
     }
 }

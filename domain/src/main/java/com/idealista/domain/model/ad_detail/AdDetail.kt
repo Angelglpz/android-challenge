@@ -1,46 +1,44 @@
-package com.idealista.data.dto.ad_detail
+package com.idealista.domain.model.ad_detail
 
-import com.squareup.moshi.Json
-
-data class AdDetailResponse(
-    @Json(name = "adid") val adId: Int,
+data class AdDetail(
+    val adId: Int,
     val price: Double,
-    val priceInfo: PriceInfoDetailResponse,
+    val priceInfo: PriceInfoDetail,
     val operation: String,
     val propertyType: String,
     val extendedPropertyType: String,
     val homeType: String,
     val state: String,
-    val multimedia: MultimediaDetailResponse,
+    val multimedia: MultimediaDetail,
     val propertyComment: String,
-    val ubication: UbicationDetailResponse,
+    val ubication: UbicationDetail,
     val country: String,
-    val moreCharacteristics: MoreCharacteristicsDetailResponse,
-    val energyCertification: EnergyCertificationDetailResponse
+    val moreCharacteristics: MoreCharacteristicsDetail,
+    val energyCertification: EnergyCertificationDetail
 )
 
-data class PriceInfoDetailResponse(
+data class PriceInfoDetail(
     val amount: Double,
     val currencySuffix: String
 )
 
-data class MultimediaDetailResponse(
-    val images: List<ImageDetailResponse>
+data class MultimediaDetail(
+    val images: List<ImageDetail>
 )
 
-data class ImageDetailResponse(
+data class ImageDetail(
     val url: String,
     val tag: String,
     val localizedName: String,
     val multimediaId: Long
 )
 
-data class UbicationDetailResponse(
+data class UbicationDetail(
     val latitude: Double,
     val longitude: Double
 )
 
-data class MoreCharacteristicsDetailResponse(
+data class MoreCharacteristicsDetail(
     val communityCosts: Double,
     val roomNumber: Int,
     val bathNumber: Int,
@@ -58,12 +56,12 @@ data class MoreCharacteristicsDetailResponse(
     val status: String
 )
 
-data class EnergyCertificationDetailResponse(
+data class EnergyCertificationDetail(
     val title: String,
-    val energyConsumption: EnergyValueDetailResponse,
-    val emissions: EnergyValueDetailResponse
+    val energyConsumption: EnergyValueDetail,
+    val emissions: EnergyValueDetail
 )
 
-data class EnergyValueDetailResponse(
+data class EnergyValueDetail(
     val type: String
 )

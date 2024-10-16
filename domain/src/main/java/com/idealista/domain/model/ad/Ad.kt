@@ -1,11 +1,11 @@
-package com.idealista.data.dto.ad
+package com.idealista.domain.model.ad
 
-data class AdResponse(
+data class Ad(
     val propertyCode: String,
     val thumbnail: String,
     val floor: String,
     val price: Int,
-    val priceInfo: PriceInfoResponse,
+    val priceInfo: PriceInfo,
     val propertyType: String,
     val operation: String,
     val size: Int,
@@ -21,30 +21,30 @@ data class AdResponse(
     val latitude: Double,
     val longitude: Double,
     val description: String,
-    val multimedia: MultimediaResponse,
-    val features: FeaturesResponse,
-    val parkingSpace: ParkingSpaceResponse?
+    val multimedia: Multimedia,
+    val features: Features,
+    val parkingSpace: ParkingSpace?
 )
 
-data class PriceInfoResponse(
-    val price: PriceResponse
+data class PriceInfo(
+    val price: Price
 )
 
-data class PriceResponse(
+data class Price(
     val amount: Int,
     val currencySuffix: String
 )
 
-data class MultimediaResponse(
-    val images: List<ImageResponse>
+data class Multimedia(
+    val images: List<Image>
 )
 
-data class ImageResponse(
+data class Image(
     val url: String,
     val tag: String
 )
 
-data class FeaturesResponse(
+data class Features(
     val hasAirConditioning: Boolean?,
     val hasBoxRoom: Boolean?,
     val hasSwimmingPool: Boolean?,
@@ -52,7 +52,7 @@ data class FeaturesResponse(
     val hasGarden: Boolean?
 )
 
-data class ParkingSpaceResponse(
+data class ParkingSpace(
     val hasParkingSpace: Boolean,
     val isParkingSpaceIncludedInPrice: Boolean
 )
