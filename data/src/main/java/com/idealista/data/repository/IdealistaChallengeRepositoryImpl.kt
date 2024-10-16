@@ -13,7 +13,7 @@ internal class IdealistaChallengeRepositoryImpl @Inject constructor(
     private val dataSource: IdealistaChallengeDataSource,
     private val ioDispatcher: CoroutineDispatcher
 ) : IdealistaChallengeRepository {
-    override suspend fun getAds(): ApiResponseStatus<List<Ad>> {
+    override suspend fun getAdsList(): ApiResponseStatus<List<Ad>> {
         return withContext(ioDispatcher) {
             dataSource.getAds()
         }
