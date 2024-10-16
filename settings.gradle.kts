@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Idealista Challenge"
 include(":app")
+include(":data")
