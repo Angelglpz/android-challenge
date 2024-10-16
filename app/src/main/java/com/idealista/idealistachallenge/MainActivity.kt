@@ -1,9 +1,8 @@
 package com.idealista.idealistachallenge
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ComponentActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
 
-}
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity()
