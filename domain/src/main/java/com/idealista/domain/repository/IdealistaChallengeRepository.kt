@@ -1,12 +1,10 @@
-package com.idealista.data.datasource
+package com.idealista.domain.repository
 
 import com.idealista.domain.model.ad.Ad
 import com.idealista.domain.model.ad_detail.AdDetail
 import com.idealista.domain.util.ApiResponseStatus
 
-internal interface IdealistaChallengeDataSource {
-
+interface IdealistaChallengeRepository {
     suspend fun getAds(): ApiResponseStatus<List<Ad>>
     suspend fun getAdDetail(): ApiResponseStatus<AdDetail>
-
 }

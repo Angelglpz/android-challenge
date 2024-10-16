@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt)
-    kotlin("kapt")
 }
 
 android {
-    namespace = "com.idealista.data"
+    namespace = "com.idealista.domain"
     compileSdk = 34
 
     defaultConfig {
@@ -36,24 +34,10 @@ android {
 
 dependencies {
 
-    implementation(project(":domain"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // Retrofit
-    implementation(libs.retrofit)
-
-    // Moshi
-    implementation(libs.moshi)
-
-    // Moshi Converter
-    implementation(libs.converter.moshi)
-
-    // DI
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
 }
