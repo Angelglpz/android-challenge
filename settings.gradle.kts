@@ -23,3 +23,5 @@ rootProject.name = "Idealista Challenge"
 include(":app")
 include(":data")
 include(":domain")
+include(":presentation")
+include(":core")
