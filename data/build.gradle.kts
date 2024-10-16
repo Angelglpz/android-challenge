@@ -49,6 +49,7 @@ dependencies {
 
     // Moshi
     implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
 
     // Moshi Converter
     implementation(libs.converter.moshi)
