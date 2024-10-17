@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -19,6 +21,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -35,6 +38,7 @@ import com.idealista.presentation.R
 import com.idealista.presentation.feature.ad_list.event.AdListEvent
 import com.idealista.presentation.feature.ad_list.state.AdListScreenState
 import com.idealista.presentation.feature.ad_list.util.AdListTheme
+import com.idealista.presentation.feature.ad_list.util.Constants
 import com.idealista.presentation.feature.ad_list.util.formatNoFraction
 import com.idealista.presentation.feature.ad_list.util.formatPrice
 import com.idealista.presentation.feature.ad_list.viewmodel.AdListViewModel
@@ -87,12 +91,7 @@ private fun Ad(state: AdListScreenState, onEvent: (AdListEvent) -> Unit) {
                 .padding(dimensionResource(R.dimen.padding_8dp))
                 .background(color = MaterialTheme.colorScheme.background)
         ) {
-            AsyncImage(
-                model = ad.thumbnail,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.FillWidth,
-                contentDescription = null
-            )
+            ImageCarousel(ad)
             AdAddress(ad)
             ad.priceInfo.let { price ->
                 Text(
@@ -129,7 +128,7 @@ private fun Ad(state: AdListScreenState, onEvent: (AdListEvent) -> Unit) {
 
             HorizontalDivider(
                 modifier = Modifier.padding(
-                    top = dimensionResource(R.dimen.padding_16dp)
+                    top = dimensionResource(R.dimen.padding_8dp)
                 )
             )
             AdFooter(state = state, ad = ad, onEvent = onEvent)
@@ -215,6 +214,42 @@ private fun AdAddress(ad: Ad) {
         fontWeight = FontWeight.Bold,
         fontSize = dimensionResource(R.dimen.text_size_s).value.sp
     )
+}
+
+@Composable
+fun ImageCarousel(ad: Ad) {
+    val pagerState = rememberPagerState(pageCount = {
+        Constants.IMAGE_PAGER_MAX_SIZE
+    })
+
+    HorizontalPager(
+        state = pagerState,
+        modifier = Modifier.fillMaxSize()
+    ) { page ->
+        val imageIndex = page % ad.multimedia.images.size
+        val imageUrl = ad.multimedia.images[imageIndex].url
+        Box {
+            AsyncImage(
+                model = imageUrl,
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillWidth,
+                contentDescription = null
+            )
+            Box(
+                modifier = Modifier
+                    .background(Color.LightGray.copy(alpha = 0.5f))
+                    .align(Alignment.BottomEnd)
+            ) {
+                Text(
+                    text = "${imageIndex + 1}/${ad.multimedia.images.size}",
+                    modifier = Modifier
+                        .padding(
+                            dimensionResource(R.dimen.padding_8dp)
+                        )
+                )
+            }
+        }
+    }
 }
 
 
