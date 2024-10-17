@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/adListFragment">
 
+    <fragment
+        android:id="@+id/adListFragment"
+        android:name="com.idealista.presentation.feature.ad_list.fragment.AdListFragment"
+        android:label="AdListFragment" />
 </navigation>

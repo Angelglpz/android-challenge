@@ -1,4 +1,4 @@
-package com.idealista.presentation.feature.ad_list
+package com.idealista.presentation.feature.ad_list.util
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -10,18 +10,18 @@ import com.idealista.core.R
 
 @Composable
 fun customLightColorScheme() = lightColorScheme(
-    primary = colorResource(id = R.color.green_light),
+    primary = colorResource(id = R.color.magenta_light),
     onPrimary = colorResource(id = R.color.green_dark),
-    secondary = colorResource(id = R.color.magenta_light),
+    secondary = colorResource(id = R.color.green_light),
     onSecondary = colorResource(id = R.color.magenta_dark),
     background = colorResource(id = R.color.white)
 )
 
 @Composable
 fun customDarkColorScheme() = darkColorScheme(
-    primary = colorResource(id = R.color.green_dark),
+    primary = colorResource(id = R.color.magenta_dark),
     onPrimary = colorResource(id = R.color.green_light),
-    secondary = colorResource(id = R.color.magenta_dark),
+    secondary = colorResource(id = R.color.green_dark),
     onSecondary = colorResource(id = R.color.magenta_light),
     background = colorResource(id = R.color.black)
 )
