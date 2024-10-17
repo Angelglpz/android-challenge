@@ -4,11 +4,11 @@ data class Ad(
     val propertyCode: String,
     val thumbnail: String,
     val floor: String,
-    val price: Int,
-    val priceInfo: PriceInfo,
-    val propertyType: String,
-    val operation: String,
-    val size: Int,
+    val price: Double,
+    val priceInfo: Price,
+    val propertyType: PropertyType,
+    val operation: Operation,
+    val size: Double,
     val exterior: Boolean,
     val rooms: Int,
     val bathrooms: Int,
@@ -23,15 +23,12 @@ data class Ad(
     val description: String,
     val multimedia: Multimedia,
     val features: Features,
-    val parkingSpace: ParkingSpace?
-)
-
-data class PriceInfo(
-    val price: Price
+    val parkingSpace: ParkingSpace?,
+    val isFavorite: Boolean
 )
 
 data class Price(
-    val amount: Int,
+    val amount: Double,
     val currencySuffix: String
 )
 

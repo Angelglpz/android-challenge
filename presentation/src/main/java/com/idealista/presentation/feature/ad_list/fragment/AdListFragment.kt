@@ -21,7 +21,7 @@ class AdListFragment : Fragment() {
             arguments?.getInt(Constants.NAVIGATION_BAR_HEIGHT_KEY)?.pxToDp(requireContext())
         return ComposeView(requireContext()).apply {
             setContent {
-                AdListScreen(navigationBarHeight ?: 0F)
+                AdListScreen(navigationBarHeight = navigationBarHeight ?: 0F)
             }
         }
     }
