@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-
     implementation(libs.androidx.core.splashscreen)
 
     // Views/Fragments integration
