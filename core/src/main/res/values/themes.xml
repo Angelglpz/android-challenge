@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.IdealistaChallenge" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_light</item>
+        <item name="colorPrimary">@color/magenta_light</item>
         <item name="colorPrimaryVariant">@color/green_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/magenta_light</item>
+        <item name="colorSecondary">@color/green_light</item>
         <item name="colorSecondaryVariant">@color/magenta_dark</item>
         <item name="colorOnSecondary">@color/white</item> <!-- Text color on secondary color -->
         <!-- Status bar color. -->
