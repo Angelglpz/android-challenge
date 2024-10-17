@@ -5,24 +5,25 @@ import com.idealista.data.dto.ad.FeaturesResponse
 import com.idealista.data.dto.ad.ImageResponse
 import com.idealista.data.dto.ad.MultimediaResponse
 import com.idealista.data.dto.ad.ParkingSpaceResponse
-import com.idealista.data.dto.ad.PriceInfoResponse
 import com.idealista.data.dto.ad.PriceResponse
 import com.idealista.domain.model.ad.Ad
 import com.idealista.domain.model.ad.Features
 import com.idealista.domain.model.ad.Image
 import com.idealista.domain.model.ad.Multimedia
+import com.idealista.domain.model.ad.Operation
 import com.idealista.domain.model.ad.ParkingSpace
 import com.idealista.domain.model.ad.Price
-import com.idealista.domain.model.ad.PriceInfo
+import com.idealista.domain.model.ad.PropertyType
+import java.util.Locale
 
 fun AdResponse.toDomain(): Ad = Ad(
     propertyCode = this.propertyCode,
     thumbnail = this.thumbnail,
     floor = this.floor,
     price = this.price,
-    priceInfo = this.priceInfo.toDomain(),
-    propertyType = this.propertyType,
-    operation = this.operation,
+    priceInfo = this.priceInfo.price.toDomain(),
+    propertyType = PropertyType.valueOf(this.propertyType.uppercase(Locale.getDefault())),
+    operation = Operation.valueOf(this.operation.uppercase(Locale.getDefault())),
     size = this.size,
     exterior = this.exterior,
     rooms = this.rooms,
@@ -38,11 +39,8 @@ fun AdResponse.toDomain(): Ad = Ad(
     description = this.description,
     multimedia = this.multimedia.toDomain(),
     features = this.features.toDomain(),
-    parkingSpace = this.parkingSpace?.toDomain()
-)
-
-fun PriceInfoResponse.toDomain(): PriceInfo = PriceInfo(
-    price = this.price.toDomain()
+    parkingSpace = this.parkingSpace?.toDomain(),
+    isFavorite = false
 )
 
 

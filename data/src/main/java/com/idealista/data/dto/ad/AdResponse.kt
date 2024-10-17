@@ -4,11 +4,11 @@ data class AdResponse(
     val propertyCode: String,
     val thumbnail: String,
     val floor: String,
-    val price: Int,
+    val price: Double,
     val priceInfo: PriceInfoResponse,
     val propertyType: String,
     val operation: String,
-    val size: Int,
+    val size: Double,
     val exterior: Boolean,
     val rooms: Int,
     val bathrooms: Int,
@@ -31,7 +31,7 @@ data class PriceInfoResponse(
 )
 
 data class PriceResponse(
-    val amount: Int,
+    val amount: Double,
     val currencySuffix: String
 )
 
