@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="property_type_flat">Piso</string>
+    <string name="address_complete">%s en %s, %s, %s</string>
+    <string name="rooms">%d hab.</string>
+    <string name="size">%s m&#178;</string>
+    <string name="outer">exterior</string>
+    <string name="inner">interior</string>
+    <string name="ground_floor">baja</string>
+    <string name="floor_info">Planta %sª %s</string>
+    <string name="call">Llamar</string>
+    <string name="message">Contactar</string>
+</resources>
