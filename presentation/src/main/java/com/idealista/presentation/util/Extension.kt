@@ -1,4 +1,4 @@
-package com.idealista.core.util
+package com.idealista.presentation.util
 
 import android.content.Context
 
