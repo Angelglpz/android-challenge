@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import com.idealista.core.util.Constants
-import com.idealista.core.util.pxToDp
 import com.idealista.presentation.feature.ad_list.screen.AdListScreen
+import com.idealista.presentation.util.Constants
+import com.idealista.presentation.util.pxToDp
 
 class AdListFragment : Fragment() {
 

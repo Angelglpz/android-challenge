@@ -1,12 +1,13 @@
-package com.idealista.idealistachallenge
+package com.idealista.presentation.main
 
 import android.os.Bundle
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.idealista.core.util.Constants
-import com.idealista.idealistachallenge.databinding.MainActivityBinding
+import com.idealista.presentation.R
+import com.idealista.presentation.databinding.MainActivityBinding
+import com.idealista.presentation.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     navController.setGraph(
-                        com.idealista.presentation.R.navigation.nav_graph,
+                        R.navigation.nav_graph,
                         bundle
                     )
                     binding.bottomNavigation.setupWithNavController(navController)

@@ -49,7 +49,6 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":presentation"))
-    implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
