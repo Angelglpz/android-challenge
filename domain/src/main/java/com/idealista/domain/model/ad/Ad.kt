@@ -1,7 +1,7 @@
 package com.idealista.domain.model.ad
 
 data class Ad(
-    val propertyCode: String,
+    val id: Int,
     val thumbnail: String,
     val floor: String,
     val price: Double,
@@ -23,8 +23,7 @@ data class Ad(
     val description: String,
     val multimedia: Multimedia,
     val features: Features,
-    val parkingSpace: ParkingSpace?,
-    val isFavorite: Boolean
+    val parkingSpace: ParkingSpace?
 )
 
 data class Price(

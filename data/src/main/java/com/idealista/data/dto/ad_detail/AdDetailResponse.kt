@@ -3,7 +3,7 @@ package com.idealista.data.dto.ad_detail
 import com.squareup.moshi.Json
 
 data class AdDetailResponse(
-    @Json(name = "adid") val adId: Int,
+    @Json(name = "adid") val id: Int,
     val price: Double,
     val priceInfo: PriceInfoDetailResponse,
     val operation: String,
