@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.idealista.domain.usecase.GetAdsListUseCase
 import com.idealista.domain.util.ApiResponseStatus
 import com.idealista.presentation.feature.ad_list.event.AdListEvent
+import com.idealista.presentation.feature.ad_list.mapper.toAdDetailArgs
 import com.idealista.presentation.feature.ad_list.state.AdListScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -25,9 +26,9 @@ class AdListViewModel @Inject constructor(
     }
 
     internal fun onEvent(event: AdListEvent) {
-        when (event) {
+        state = when (event) {
             is AdListEvent.OnFavoritesClicked -> {
-                state = state.copy(
+                state.copy(
                     adList = state.adList.map { ad ->
                         if (ad.propertyCode == event.ad.propertyCode) {
                             ad.copy(isFavorite = !ad.isFavorite)
@@ -37,6 +38,8 @@ class AdListViewModel @Inject constructor(
                     }
                 )
             }
+
+            is AdListEvent.OnAdClicked -> state.copy(navigateToDetailWithArgs = event.ad.toAdDetailArgs())
         }
     }
 
@@ -53,5 +56,9 @@ class AdListViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun cleanNavigateToDetail() {
+        state = state.copy(navigateToDetailWithArgs = null)
     }
 }
