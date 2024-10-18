@@ -4,4 +4,5 @@ import com.idealista.domain.model.ad.Ad
 
 internal sealed class AdListEvent {
     class OnFavoritesClicked(val ad: Ad) : AdListEvent()
+    class OnAdClicked(val ad: Ad) : AdListEvent()
 }
