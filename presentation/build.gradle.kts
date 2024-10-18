@@ -38,10 +38,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.2"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation(project(":core"))
     implementation(project(":domain"))
 
     implementation(libs.androidx.core.ktx)

@@ -1,5 +1,6 @@
 package com.idealista.presentation.feature.ad_list.screen
 
+import android.view.LayoutInflater
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.idealista.domain.model.ad.Ad
@@ -42,7 +45,6 @@ import com.idealista.presentation.feature.ad_list.util.Constants
 import com.idealista.presentation.feature.ad_list.util.formatNoFraction
 import com.idealista.presentation.feature.ad_list.util.formatPrice
 import com.idealista.presentation.feature.ad_list.viewmodel.AdListViewModel
-import com.idealista.core.R as CoreR
 
 @Composable
 fun AdListScreen(
@@ -50,20 +52,31 @@ fun AdListScreen(
     navigationBarHeight: Float
 ) {
     AdListTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            AdList(
+        if (viewModel.state.showLoading) {
+            Box {
+                AndroidView(
+                    factory = { context ->
+                        LayoutInflater.from(context).inflate(R.layout.loading_view, null, false)
+                    },
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        } else {
+            Box(
                 modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .padding(
-                        top = dimensionResource(R.dimen.padding_16dp),
-                        bottom = navigationBarHeight.dp
-                    ),
-                state = viewModel.state,
-                onEvent = viewModel::onEvent
-            )
+                    .fillMaxSize()
+            ) {
+                AdList(
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(
+                            top = dimensionResource(R.dimen.padding_16dp),
+                            bottom = navigationBarHeight.dp
+                        ),
+                    state = viewModel.state,
+                    onEvent = viewModel::onEvent
+                )
+            }
         }
     }
 }
@@ -182,9 +195,9 @@ private fun AdFooter(state: AdListScreenState, ad: Ad, onEvent: (AdListEvent) ->
         }) {
             Icon(
                 painter = if (ad.isFavorite) {
-                    painterResource(id = CoreR.drawable.fill_favorite_24)
+                    painterResource(id = R.drawable.fill_favorite_24)
                 } else {
-                    painterResource(id = CoreR.drawable.outline_favorite_border_24)
+                    painterResource(id = R.drawable.outline_favorite_border_24)
                 },
                 tint = MaterialTheme.colorScheme.primary,
                 contentDescription = null
@@ -218,15 +231,17 @@ private fun AdAddress(ad: Ad) {
 
 @Composable
 fun ImageCarousel(ad: Ad) {
+    val totalImages = ad.multimedia.images.size
     val pagerState = rememberPagerState(pageCount = {
-        Constants.IMAGE_PAGER_MAX_SIZE
+        totalImages * Constants.PAGER_MULTIPLIER
     })
 
     HorizontalPager(
         state = pagerState,
         modifier = Modifier.fillMaxSize()
     ) { page ->
-        val imageIndex = page % ad.multimedia.images.size
+        // We use the modulo function here to make sure that the page is always between 0 and the number of images
+        val imageIndex = page % totalImages
         val imageUrl = ad.multimedia.images[imageIndex].url
         Box {
             AsyncImage(
@@ -235,6 +250,9 @@ fun ImageCarousel(ad: Ad) {
                 contentScale = ContentScale.FillWidth,
                 contentDescription = null
             )
+            LaunchedEffect(pagerState.currentPage) {
+                pagerState.scrollToPage(totalImages * Constants.PAGER_MULTIPLIER / 2)
+            }
             Box(
                 modifier = Modifier
                     .background(Color.LightGray.copy(alpha = 0.5f))
