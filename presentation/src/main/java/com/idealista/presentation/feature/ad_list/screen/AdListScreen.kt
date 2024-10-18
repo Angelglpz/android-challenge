@@ -36,15 +36,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
-import com.idealista.domain.model.ad.Ad
 import com.idealista.presentation.R
 import com.idealista.presentation.feature.ad_list.event.AdListEvent
 import com.idealista.presentation.feature.ad_list.fragment.AdListFragmentDirections
 import com.idealista.presentation.feature.ad_list.state.AdListScreenState
 import com.idealista.presentation.feature.ad_list.util.AdListTheme
 import com.idealista.presentation.feature.ad_list.util.formatNoFraction
-import com.idealista.presentation.feature.ad_list.util.formatPrice
 import com.idealista.presentation.feature.ad_list.viewmodel.AdListViewModel
+import com.idealista.presentation.feature.ad_list.vo.AdVO
 import com.idealista.presentation.util.getResourceString
 
 @Composable
@@ -119,16 +118,14 @@ private fun Ad(state: AdListScreenState, onEvent: (AdListEvent) -> Unit) {
         ) {
             ImageCarousel(ad)
             AdAddress(ad)
-            ad.priceInfo.let { price ->
-                Text(
-                    text = price.amount.formatPrice(price.currencySuffix),
-                    modifier = Modifier.padding(
-                        start = dimensionResource(R.dimen.dimen_8dp),
-                        top = dimensionResource(R.dimen.dimen_4dp)
-                    ),
-                    style = MaterialTheme.typography.titleLarge
-                )
-            }
+            Text(
+                text = ad.price,
+                modifier = Modifier.padding(
+                    start = dimensionResource(R.dimen.dimen_8dp),
+                    top = dimensionResource(R.dimen.dimen_4dp)
+                ),
+                style = MaterialTheme.typography.titleLarge
+            )
             AdMoreInfo(ad)
 
             HorizontalDivider(
@@ -136,7 +133,7 @@ private fun Ad(state: AdListScreenState, onEvent: (AdListEvent) -> Unit) {
                     top = dimensionResource(R.dimen.dimen_8dp)
                 )
             )
-            AdFooter(state = state, ad = ad, onEvent = onEvent)
+            AdFooter(ad = ad, onEvent = onEvent)
 
         }
     }
@@ -144,8 +141,8 @@ private fun Ad(state: AdListScreenState, onEvent: (AdListEvent) -> Unit) {
 }
 
 @Composable
-fun ImageCarousel(ad: Ad) {
-    val totalImages = ad.multimedia.images.size
+fun ImageCarousel(ad: AdVO) {
+    val totalImages = ad.images.size
     val pagerState = rememberPagerState(pageCount = {
         Int.MAX_VALUE
     })
@@ -156,7 +153,7 @@ fun ImageCarousel(ad: Ad) {
     ) { page ->
         // We use the modulo function here to make sure that the page is always between 0 and the number of images
         val imageIndex = page % totalImages
-        val imageUrl = ad.multimedia.images[imageIndex].url
+        val imageUrl = ad.images[imageIndex].url
         Box {
             AsyncImage(
                 model = imageUrl,
@@ -180,7 +177,7 @@ fun ImageCarousel(ad: Ad) {
                     .align(Alignment.BottomEnd)
             ) {
                 Text(
-                    text = "${imageIndex + 1}/${ad.multimedia.images.size}",
+                    text = "${imageIndex + 1}/${ad.images.size}",
                     modifier = Modifier
                         .padding(
                             dimensionResource(R.dimen.dimen_8dp)
@@ -193,7 +190,7 @@ fun ImageCarousel(ad: Ad) {
 }
 
 @Composable
-private fun AdAddress(ad: Ad) {
+private fun AdAddress(ad: AdVO) {
     Text(
         text = stringResource(
             R.string.address_complete,
@@ -212,7 +209,7 @@ private fun AdAddress(ad: Ad) {
 }
 
 @Composable
-private fun AdMoreInfo(ad: Ad) {
+private fun AdMoreInfo(ad: AdVO) {
     Row(modifier = Modifier.padding(top = dimensionResource(R.dimen.dimen_4dp))) {
         Text(
             text = stringResource(R.string.rooms, ad.rooms),
@@ -240,7 +237,7 @@ private fun AdMoreInfo(ad: Ad) {
 }
 
 @Composable
-private fun AdFooter(state: AdListScreenState, ad: Ad, onEvent: (AdListEvent) -> Unit) {
+private fun AdFooter(ad: AdVO, onEvent: (AdListEvent) -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,

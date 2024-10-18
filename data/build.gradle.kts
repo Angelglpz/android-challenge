@@ -10,7 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -57,4 +57,9 @@ dependencies {
     // DI
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    // Room Database
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }

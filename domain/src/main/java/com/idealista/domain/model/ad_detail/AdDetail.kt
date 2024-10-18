@@ -3,7 +3,7 @@ package com.idealista.domain.model.ad_detail
 import com.idealista.domain.model.ad.PropertyType
 
 data class AdDetail(
-    val adId: Int,
+    val id: Int,
     val price: Double,
     val priceInfo: PriceInfoDetail,
     val operation: String,
