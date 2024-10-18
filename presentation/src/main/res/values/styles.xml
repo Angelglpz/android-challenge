@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleLarge">
+        <item name="android:textSize">@dimen/text_size_l</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleMedium">
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleSmall">
+        <item name="android:textSize">@dimen/text_size_s</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BodyMedium">
+        <item name="android:textSize">@dimen/text_size_medium_small</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BodySmall">
+        <item name="android:textSize">@dimen/text_size_s</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

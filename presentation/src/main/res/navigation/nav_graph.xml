@@ -7,5 +7,22 @@
     <fragment
         android:id="@+id/adListFragment"
         android:name="com.idealista.presentation.feature.ad_list.fragment.AdListFragment"
-        android:label="AdListFragment" />
+        android:label="AdListFragment">
+        <action
+            android:id="@+id/action_adListFragment_to_adDetailFragment"
+            app:destination="@id/adDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/adDetailFragment"
+        android:name="com.idealista.presentation.feature.ad_detail.fragment.AdDetailFragment"
+        android:label="AdDetailFragment">
+        <argument
+            android:name="adDetailArgs"
+            app:argType="com.idealista.presentation.feature.navigation.ad_detail.AdDetailArgs"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_adDetailFragment_to_adListFragment"
+            app:destination="@id/adListFragment" />
+    </fragment>
 </navigation>

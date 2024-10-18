@@ -4,6 +4,7 @@
     <string name="title_home_menu">Inicio</string>
     <string name="title_favorites_menu">Favoritos</string>
     <string name="property_type_flat">Piso</string>
+    <string name="property_type_homes">Casa</string>
     <string name="address_complete">%s en %s, %s, %s</string>
     <string name="rooms">%d hab.</string>
     <string name="size">%s m&#178;</string>
