@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AdDetailArgs(
-    val adId: String,
+    val id: Int,
     val address: String,
     val district: String,
     val municipality: String

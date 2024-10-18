@@ -20,7 +20,7 @@ import com.idealista.domain.model.ad_detail.UbicationDetail
 import java.util.Locale
 
 fun AdDetailResponse.toDomain(): AdDetail = AdDetail(
-    adId = this.adId,
+    id = this.id,
     price = this.price,
     priceInfo = this.priceInfo.toDomain(),
     operation = this.operation,

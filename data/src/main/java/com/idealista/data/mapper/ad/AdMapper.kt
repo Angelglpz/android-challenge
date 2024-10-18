@@ -17,7 +17,7 @@ import com.idealista.domain.model.ad.PropertyType
 import java.util.Locale
 
 fun AdResponse.toDomain(): Ad = Ad(
-    propertyCode = this.propertyCode,
+    id = this.propertyCode.toInt(),
     thumbnail = this.thumbnail,
     floor = this.floor,
     price = this.price,
@@ -39,8 +39,7 @@ fun AdResponse.toDomain(): Ad = Ad(
     description = this.description,
     multimedia = this.multimedia.toDomain(),
     features = this.features.toDomain(),
-    parkingSpace = this.parkingSpace?.toDomain(),
-    isFavorite = false
+    parkingSpace = this.parkingSpace?.toDomain()
 )
 
 
