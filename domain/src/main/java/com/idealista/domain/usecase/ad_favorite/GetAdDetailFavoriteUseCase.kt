@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetAdDetailFavoriteUseCase @Inject constructor(
     private val adDatabaseRepository: IdealistaChallengeDatabaseRepository
 ) {
-    operator fun invoke(id: String) = adDatabaseRepository.getFavoriteAdById(id)
+    operator fun invoke(id: Int) = adDatabaseRepository.getFavoriteAdById(id)
 }
