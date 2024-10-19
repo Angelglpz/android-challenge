@@ -9,6 +9,7 @@
     <string name="address_with_type">%1s en %2s</string>
     <string name="rooms">%d hab.</string>
     <string name="size">%s m&#178;</string>
+    <string name="size_constructed">%s m&#178; construidos</string>
     <string name="outer">exterior</string>
     <string name="inner">interior</string>
     <string name="ground_floor">baja</string>
@@ -16,4 +17,17 @@
     <string name="call">Llamar</string>
     <string name="message">Contactar</string>
     <string name="page_count">%1d/%2d</string>
+    <string name="remove_favorite">Favorito</string>
+    <string name="add_favorite">Añadir a favoritos</string>
+    <string name="favorite_date">Añadido a favoritos el %s</string>
+    <string name="property_comment_title">Comentario del anunciante</string>
+    <string name="read_more">Mostrar más…</string>
+    <string name="read_less">Mostrar menos</string>
+    <string name="basic_characteristics_title">Características básicas</string>
+    <string name="community_costs">Gastos de comunidad: %s</string>
+    <string name="bathrooms">%d baños</string>
+    <string name="lift">Ascensor</string>
+    <string name="no_lift">Sin ascensor</string>
+    <string name="boxroom">Con trastero</string>
+    <string name="no_boxroom">Sin trastero</string>
 </resources>

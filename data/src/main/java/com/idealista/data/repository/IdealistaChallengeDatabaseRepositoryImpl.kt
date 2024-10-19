@@ -10,11 +10,11 @@ internal class IdealistaChallengeDatabaseRepositoryImpl @Inject constructor(
     private val databaseDataSource: IdealistaChallengeDatabaseDataSource
 ) : IdealistaChallengeDatabaseRepository {
 
-    override fun getAllFavoritesAds(): Flow<Result<List<AdFavorite>>> {
+    override fun getAllFavoritesAds(): Flow<List<AdFavorite>> {
         return databaseDataSource.getAllAdFavorites()
     }
 
-    override fun getFavoriteAdById(id: Int): Flow<Result<AdFavorite?>> {
+    override fun getFavoriteAdById(id: Int): Flow<AdFavorite?> {
         return databaseDataSource.getAdFavorites(id)
     }
 

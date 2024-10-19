@@ -5,12 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ElevatedCard
@@ -96,47 +96,42 @@ private fun AdList(
     onEvent: (AdListEvent) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
-        item {
-            Column {
-                Ad(state, onEvent)
-            }
+        items(state.adList, key = { it.id }) { ad ->
+            Ad(ad, onEvent)
         }
     }
 }
 
 @Composable
-private fun Ad(state: AdListScreenState, onEvent: (AdListEvent) -> Unit) {
-    state.adList.forEach { ad ->
-        ElevatedCard(
-            modifier = Modifier
-                .padding(dimensionResource(R.dimen.dimen_8dp))
-                .background(color = MaterialTheme.colorScheme.background)
-                .clickable {
-                    onEvent(AdListEvent.OnAdClicked(ad))
-                }
-        ) {
-            ImageCarousel(ad)
-            AdAddress(ad)
-            Text(
-                text = ad.price,
-                modifier = Modifier.padding(
-                    start = dimensionResource(R.dimen.dimen_8dp),
-                    top = dimensionResource(R.dimen.dimen_4dp)
-                ),
-                style = MaterialTheme.typography.titleLarge
-            )
-            AdMoreInfo(ad)
+private fun Ad(ad: AdVO, onEvent: (AdListEvent) -> Unit) {
+    ElevatedCard(
+        modifier = Modifier
+            .padding(dimensionResource(R.dimen.dimen_8dp))
+            .background(color = MaterialTheme.colorScheme.background)
+            .clickable {
+                onEvent(AdListEvent.OnAdClicked(ad))
+            }
+    ) {
+        ImageCarousel(ad)
+        AdAddress(ad)
+        Text(
+            text = ad.price,
+            modifier = Modifier.padding(
+                start = dimensionResource(R.dimen.dimen_8dp),
+                top = dimensionResource(R.dimen.dimen_4dp)
+            ),
+            style = MaterialTheme.typography.titleLarge
+        )
+        AdMoreInfo(ad)
 
-            HorizontalDivider(
-                modifier = Modifier.padding(
-                    top = dimensionResource(R.dimen.dimen_8dp)
-                )
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                top = dimensionResource(R.dimen.dimen_8dp)
             )
-            AdFooter(ad = ad, onEvent = onEvent)
+        )
+        AdFooter(ad = ad, onEvent = onEvent)
 
-        }
     }
-
 }
 
 @Composable
