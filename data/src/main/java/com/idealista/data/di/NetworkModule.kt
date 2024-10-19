@@ -1,6 +1,7 @@
 package com.idealista.data.di
 
 import com.idealista.data.api.AdApiService
+import com.idealista.data.util.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -18,12 +19,12 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-    
+
     @Provides
     @Singleton
     fun providesRetrofit(moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://idealista.github.io/android-challenge/")
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
