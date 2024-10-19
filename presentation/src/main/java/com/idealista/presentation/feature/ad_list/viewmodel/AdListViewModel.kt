@@ -30,6 +30,7 @@ class AdListViewModel @Inject constructor(
 ) : ViewModel() {
 
     var state by mutableStateOf(AdListScreenState())
+        private set
 
     init {
         viewModelScope.launch {
@@ -75,7 +76,6 @@ class AdListViewModel @Inject constructor(
             val adsListResult = adListDeferred.await()
 
             var adsList: List<Ad>? = null
-            var adFavorites: List<AdFavorite>? = null
 
             adsListResult.fold(
                 onSuccess = {
@@ -86,15 +86,8 @@ class AdListViewModel @Inject constructor(
                 }
             )
 
-            adsFavoritesResult.fold(
-                onSuccess = {
-                    adFavorites = it
-                },
-                onFailure = {
-                    state = state.copy(showLoading = false)
-                }
-            )
-            updateStateWithAdsData(adsList, adFavorites)
+            val adListFavorite: List<AdFavorite> = adsFavoritesResult
+            updateStateWithAdsData(adsList, adListFavorite)
         }
     }
 

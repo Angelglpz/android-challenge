@@ -23,7 +23,7 @@ fun Ad.toVO(adFavorite: AdFavorite?): AdVO {
         propertyType = propertyType,
         district = district,
         municipality = municipality,
-        price = priceInfo.amount.formatPrice(priceInfo.currencySuffix),
+        price = priceInfo.amount.formatPrice(currencySuffix = priceInfo.currencySuffix),
         rooms = rooms,
         size = size,
         exterior = exterior,
