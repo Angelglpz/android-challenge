@@ -3,6 +3,7 @@ package com.idealista.data.di
 import android.content.Context
 import androidx.room.Room
 import com.idealista.data.database.AppDatabase
+import com.idealista.data.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "idealista.db"
+            Constants.DATABASE_NAME
         ).build()
     }
 

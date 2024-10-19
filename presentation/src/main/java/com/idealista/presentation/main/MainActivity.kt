@@ -6,6 +6,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.idealista.presentation.R
 import com.idealista.presentation.databinding.MainActivityBinding
+import com.idealista.presentation.util.gone
+import com.idealista.presentation.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -24,5 +26,17 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         navController.setGraph(R.navigation.nav_graph)
         binding.bottomNavigation.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.adDetailFragment -> {
+                    binding.bottomNavigation.gone()
+                }
+
+                else -> {
+                    binding.bottomNavigation.visible()
+                }
+            }
+        }
     }
 }

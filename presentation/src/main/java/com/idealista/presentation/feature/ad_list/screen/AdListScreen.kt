@@ -217,7 +217,7 @@ private fun AdMoreInfo(ad: AdVO) {
         )
         val outerInnerText =
             if (ad.exterior) stringResource(R.string.outer) else stringResource(R.string.inner)
-        val floor = if (ad.floor == "1") stringResource(R.string.ground_floor) else ad.floor
+        val floor = if (ad.floor == "0") stringResource(R.string.ground_floor) else ad.floor
         Text(
             text = stringResource(
                 R.string.floor_info,

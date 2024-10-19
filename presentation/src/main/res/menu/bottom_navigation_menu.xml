@@ -5,7 +5,7 @@
         android:icon="@drawable/outline_home_24"
         android:title="@string/title_home_menu" />
     <item
-        android:id="@+id/adDetailFragment"
+        android:id="@+id/adFavoritesFragment"
         android:icon="@drawable/outline_favorite_border_24"
         android:title="@string/title_favorites_menu" />
 </menu>
