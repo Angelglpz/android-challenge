@@ -21,8 +21,14 @@
             android:name="adDetailArgs"
             app:argType="com.idealista.presentation.feature.navigation.ad_detail.AdDetailArgs"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/adFavoritesFragment"
+        android:name="com.idealista.presentation.feature.ad_favorites.fragment.AdFavoritesFragment"
+        android:label="AdFavoritesFragment">
         <action
-            android:id="@+id/action_adDetailFragment_to_adListFragment"
-            app:destination="@id/adListFragment" />
+            android:id="@+id/action_adFavoritesFragment_to_adDetailFragment"
+            app:destination="@id/adDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
 </navigation>
