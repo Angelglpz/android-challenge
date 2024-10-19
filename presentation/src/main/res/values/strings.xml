@@ -5,13 +5,15 @@
     <string name="title_favorites_menu">Favoritos</string>
     <string name="property_type_flat">Piso</string>
     <string name="property_type_homes">Casa</string>
-    <string name="address_complete">%s en %s, %s, %s</string>
+    <string name="address_complete">%1s en %2s, %3s, %4s</string>
+    <string name="address_with_type">%1s en %2s</string>
     <string name="rooms">%d hab.</string>
     <string name="size">%s m&#178;</string>
     <string name="outer">exterior</string>
     <string name="inner">interior</string>
     <string name="ground_floor">baja</string>
-    <string name="floor_info">Planta %sª %s</string>
+    <string name="floor_info">Planta %1sª %2s</string>
     <string name="call">Llamar</string>
     <string name="message">Contactar</string>
+    <string name="page_count">%1d/%2d</string>
 </resources>

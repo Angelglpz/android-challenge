@@ -14,7 +14,7 @@ interface AdFavoritesDao {
     fun getAllFavorites(): Flow<List<AdFavoriteEntity>>
 
     @Query("SELECT * FROM ad_favorite WHERE id = :id")
-    fun getAdById(id: String): Flow<AdFavoriteEntity?>
+    fun getAdById(id: Int): Flow<AdFavoriteEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAd(ad: AdFavoriteEntity)

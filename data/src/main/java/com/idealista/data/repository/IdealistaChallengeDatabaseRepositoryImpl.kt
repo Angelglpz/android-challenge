@@ -14,7 +14,7 @@ internal class IdealistaChallengeDatabaseRepositoryImpl @Inject constructor(
         return databaseDataSource.getAllAdFavorites()
     }
 
-    override fun getFavoriteAdById(id: String): Flow<Result<AdFavorite?>> {
+    override fun getFavoriteAdById(id: Int): Flow<Result<AdFavorite?>> {
         return databaseDataSource.getAdFavorites(id)
     }
 
