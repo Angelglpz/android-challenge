@@ -2,6 +2,7 @@ package com.idealista.presentation.feature.ad_list.vo
 
 import com.idealista.domain.model.ad.PropertyType
 
+
 data class AdVO(
     val id: Int,
     val images: List<AdImagesVO>,

@@ -30,7 +30,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -41,16 +40,15 @@ import com.idealista.presentation.feature.ad_list.event.AdListEvent
 import com.idealista.presentation.feature.ad_list.fragment.AdListFragmentDirections
 import com.idealista.presentation.feature.ad_list.state.AdListScreenState
 import com.idealista.presentation.feature.ad_list.util.AdListTheme
-import com.idealista.presentation.feature.ad_list.util.formatNoFraction
 import com.idealista.presentation.feature.ad_list.viewmodel.AdListViewModel
 import com.idealista.presentation.feature.ad_list.vo.AdVO
+import com.idealista.presentation.util.formatNoFraction
 import com.idealista.presentation.util.getResourceString
 
 @Composable
 fun AdListScreen(
     viewModel: AdListViewModel = hiltViewModel(),
-    navController: NavController,
-    navigationBarHeight: Float
+    navController: NavController
 ) {
     AdListTheme {
         if (viewModel.state.showLoading) {
@@ -71,8 +69,7 @@ fun AdListScreen(
                     modifier = Modifier
                         .align(Alignment.TopCenter)
                         .padding(
-                            top = dimensionResource(R.dimen.dimen_16dp),
-                            bottom = navigationBarHeight.dp
+                            top = dimensionResource(R.dimen.dimen_16dp)
                         ),
                     state = viewModel.state,
                     onEvent = viewModel::onEvent
@@ -83,7 +80,9 @@ fun AdListScreen(
     LaunchedEffect(viewModel.state.navigateToDetailWithArgs) {
         if (viewModel.state.navigateToDetailWithArgs != null) {
             val action =
-                AdListFragmentDirections.actionAdListFragmentToAdDetailFragment(viewModel.state.navigateToDetailWithArgs)
+                AdListFragmentDirections.actionAdListFragmentToAdDetailFragment(
+                    viewModel.state.navigateToDetailWithArgs
+                )
             navController.navigate(action)
             viewModel.cleanNavigateToDetail()
         }
@@ -177,7 +176,7 @@ fun ImageCarousel(ad: AdVO) {
                     .align(Alignment.BottomEnd)
             ) {
                 Text(
-                    text = "${imageIndex + 1}/${ad.images.size}",
+                    text = stringResource(R.string.page_count, imageIndex + 1, totalImages),
                     modifier = Modifier
                         .padding(
                             dimensionResource(R.dimen.dimen_8dp)
@@ -296,6 +295,6 @@ private fun AdFooter(ad: AdVO, onEvent: (AdListEvent) -> Unit) {
 @Composable
 fun AdListScreenPreview() {
     AdListTheme {
-        AdListScreen(navController = rememberNavController(), navigationBarHeight = 0f)
+        AdListScreen(navController = rememberNavController())
     }
 }
