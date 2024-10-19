@@ -52,6 +52,10 @@ fun customTypography() = Typography(
     bodyMedium = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = dimensionResource(R.dimen.text_size_medium_small).value.sp
+    ),
+    labelSmall = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = dimensionResource(R.dimen.text_size_xs).value.sp
     )
 )
 
