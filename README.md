@@ -20,11 +20,11 @@ clean architecture with MVVM and modularization.
 
 ## Screenshots
 
-|                     Home Screen                      |                    Home Screen (Dark)                     |                    Apartment Detail                    |                      Apartment Detail                       |     
+|                     Home Screen                      |                    Home Screen (Dark)                     |                    Apartment Detail                    |                      Apartment Detail (Dark)                       |     
 |:----------------------------------------------------:|:---------------------------------------------------------:|:------------------------------------------------------:|:-----------------------------------------------------------:|
 | <img src="screenshots/home_screen.png" width="300"/> | <img src="screenshots/home_dark_screen.png" width="300"/> | <img src="screenshots/detail_screen.png" width="300"/> | <img src="screenshots/detail_dark_screen.png" width="300"/> |
 
-|                         Favorites                         |                           Favorites                            |                      Map View                       |                         Map View                         |
+|                         Favorites                         |                           Favorites (Dark)                            |                      Map View                       |                         Map View (Dark)                         |
 |:---------------------------------------------------------:|:--------------------------------------------------------------:|:---------------------------------------------------:|:--------------------------------------------------------:|
 | <img src="screenshots/favorites_screen.png" width="300"/> | <img src="screenshots/favorites_dark_screen.png" width="300"/> | <img src="screenshots/map_screen.png" width="300"/> | <img src="screenshots/map_dark_screen.png" width="300"/> |
 
@@ -33,8 +33,6 @@ clean architecture with MVVM and modularization.
 - **Kotlin**: Primary programming language.
 - **Jetpack Compose**: Used for the Home screen.
 - **XML Layouts**: Used for the other screens.
-- **MVVM Architecture**: For clear separation of concerns.
-- **Modularization**: Project divided into modules for better scalability and maintenance.
 - **Android Jetpack Libraries**: ViewModel, LiveData, Navigation, etc.
 - **Google Maps API**: For map visualization.
 - **Room Database**: For storing favorite apartments.
