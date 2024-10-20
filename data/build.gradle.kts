@@ -40,14 +40,14 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    
+
     // Testing
     implementation(libs.hilt.android.testing)
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
 
     // Retrofit
     implementation(libs.retrofit)

@@ -20,11 +20,11 @@ clean architecture with MVVM and modularization.
 
 ## Screenshots
 
-|                     Home Screen                      |                    Home Screen (Dark)                     |                    Apartment Detail                    |                      Apartment Detail (Dark)                       |     
+|                     Home Screen                      |                    Home Screen (Dark)                     |                    Apartment Detail                    |                   Apartment Detail (Dark)                   |     
 |:----------------------------------------------------:|:---------------------------------------------------------:|:------------------------------------------------------:|:-----------------------------------------------------------:|
 | <img src="screenshots/home_screen.png" width="300"/> | <img src="screenshots/home_dark_screen.png" width="300"/> | <img src="screenshots/detail_screen.png" width="300"/> | <img src="screenshots/detail_dark_screen.png" width="300"/> |
 
-|                         Favorites                         |                           Favorites (Dark)                            |                      Map View                       |                         Map View (Dark)                         |
+|                         Favorites                         |                        Favorites (Dark)                        |                      Map View                       |                     Map View (Dark)                      |
 |:---------------------------------------------------------:|:--------------------------------------------------------------:|:---------------------------------------------------:|:--------------------------------------------------------:|
 | <img src="screenshots/favorites_screen.png" width="300"/> | <img src="screenshots/favorites_dark_screen.png" width="300"/> | <img src="screenshots/map_screen.png" width="300"/> | <img src="screenshots/map_dark_screen.png" width="300"/> |
 
@@ -47,10 +47,10 @@ functionalities.
 
 ## Project Structure
 
-- **app**: Contains the base configuration and navigation.
+- **app**: Contains the base configuration.
 - **data**: Manages data sources and repositories.
 - **domain**: Contains use cases and domain models.
-- **presentation**: Includes main activity, fragments, xml views and composables.
+- **presentation**: Includes navigation, main activity, fragments, xml views and composables.
 
 ## Installation and Execution
 
