@@ -18,6 +18,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -33,7 +34,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
@@ -60,6 +60,7 @@ fun AdListScreen(
             viewModel.onResume()
         }
     }
+
     AdListTheme {
         if (viewModel.state.showLoading) {
             Box {
@@ -75,6 +76,14 @@ fun AdListScreen(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
+                if (viewModel.state.showError) {
+                    Snackbar(modifier = Modifier.align(Alignment.BottomCenter)) {
+                        Text(
+                            text = stringResource(R.string.error_message),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                }
                 AdList(
                     modifier = Modifier
                         .align(Alignment.TopCenter)

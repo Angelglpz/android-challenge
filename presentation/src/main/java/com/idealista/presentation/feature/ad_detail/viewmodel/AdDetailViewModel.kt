@@ -49,6 +49,8 @@ class AdDetailViewModel @Inject constructor(
     private val _navigateToMap = SingleLiveEvent<Pair<Float, Float>>()
     val navigateToMap: SingleLiveEvent<Pair<Float, Float>> get() = _navigateToMap
 
+    private val _showError = SingleLiveEvent<Boolean>()
+    val showError: SingleLiveEvent<Boolean> get() = _showError
 
     private val adDetailArgs: AdDetailArgs? by lazy {
         savedStateHandle.get<AdDetailArgs>(Constants.AD_DETAIL_ARGS)
@@ -77,7 +79,8 @@ class AdDetailViewModel @Inject constructor(
                 adDetail = it
             },
             onFailure = {
-                // Handle error
+                _showError.postValue(true)
+                _showLoading.postValue(false)
             }
         )
 
@@ -95,6 +98,7 @@ class AdDetailViewModel @Inject constructor(
             _favorite.postValue(adFavorite.toVO())
             _showLoading.postValue(false)
         } else {
+            _showError.postValue(true)
             _showLoading.postValue(false)
         }
     }
