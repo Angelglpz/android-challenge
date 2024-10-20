@@ -17,7 +17,7 @@ import com.idealista.presentation.R
 fun customLightColorScheme() = lightColorScheme(
     primary = colorResource(id = R.color.magenta_light),
     onPrimary = colorResource(id = R.color.green_dark),
-    secondary = colorResource(id = R.color.green_light),
+    secondary = colorResource(id = R.color.green_dark),
     onSecondary = colorResource(id = R.color.magenta_dark),
     background = colorResource(id = R.color.white)
 )
@@ -25,7 +25,7 @@ fun customLightColorScheme() = lightColorScheme(
 @Composable
 fun customDarkColorScheme() = darkColorScheme(
     primary = colorResource(id = R.color.magenta_dark),
-    onPrimary = colorResource(id = R.color.green_light),
+    onPrimary = colorResource(id = R.color.green_dark),
     secondary = colorResource(id = R.color.green_dark),
     onSecondary = colorResource(id = R.color.magenta_light),
     background = colorResource(id = R.color.black)
