@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.snackbar.Snackbar
 import com.idealista.presentation.R
 import com.idealista.presentation.databinding.AdDetailFragmentBinding
 import com.idealista.presentation.feature.ad_detail.adapter.ImagePagerAdapter
@@ -129,6 +130,10 @@ class AdDetailFragment : Fragment() {
                 longitude = coordinates.second
             )
             findNavController().navigate(action)
+        }
+
+        viewModel.showError.observe(viewLifecycleOwner) {
+            Snackbar.make(binding.root, R.string.error_message, Snackbar.LENGTH_SHORT).show()
         }
     }
 

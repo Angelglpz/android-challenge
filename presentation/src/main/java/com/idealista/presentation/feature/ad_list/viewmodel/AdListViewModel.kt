@@ -82,7 +82,7 @@ class AdListViewModel @Inject constructor(
                     adsList = it
                 },
                 onFailure = {
-                    state = state.copy(showLoading = false)
+                    state = state.copy(showLoading = false, showError = true)
                 }
             )
 
@@ -103,7 +103,7 @@ class AdListViewModel @Inject constructor(
 
             state = state.copy(adList = adVOList, showLoading = false)
         } else {
-            state = state.copy(showLoading = false)
+            state = state.copy(showLoading = false, showError = true)
         }
     }
 

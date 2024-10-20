@@ -31,4 +31,5 @@
     <string name="no_lift">Sin ascensor</string>
     <string name="boxroom">Con trastero</string>
     <string name="no_boxroom">Sin trastero</string>
+    <string name="error_message">Ha ocurrido un error</string>
 </resources>
