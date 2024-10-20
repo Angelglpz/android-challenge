@@ -13,7 +13,6 @@ import com.idealista.domain.model.ad.Multimedia
 import com.idealista.domain.model.ad.Operation
 import com.idealista.domain.model.ad.ParkingSpace
 import com.idealista.domain.model.ad.Price
-import com.idealista.domain.model.ad.PropertyType
 import java.util.Locale
 
 fun AdResponse.toDomain(): Ad = Ad(
@@ -22,8 +21,8 @@ fun AdResponse.toDomain(): Ad = Ad(
     floor = this.floor,
     price = this.price,
     priceInfo = this.priceInfo.price.toDomain(),
-    propertyType = PropertyType.valueOf(this.propertyType.uppercase(Locale.getDefault())),
-    operation = Operation.valueOf(this.operation.uppercase(Locale.getDefault())),
+    propertyType = this.propertyType.toPropertyTypeEnum(),
+    operation = this.operation.toOperationEnum(),
     size = this.size,
     exterior = this.exterior,
     rooms = this.rooms,
@@ -73,4 +72,12 @@ fun ParkingSpaceResponse.toDomain(): ParkingSpace = ParkingSpace(
     hasParkingSpace = this.hasParkingSpace,
     isParkingSpaceIncludedInPrice = this.isParkingSpaceIncludedInPrice
 )
+
+fun String.toOperationEnum(): Operation {
+    return try {
+        Operation.valueOf(this.uppercase(Locale.getDefault()))
+    } catch (e: IllegalArgumentException) {
+        Operation.UNKNOWN
+    }
+}
 

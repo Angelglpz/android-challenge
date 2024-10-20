@@ -12,6 +12,7 @@ internal fun PropertyType.getResourceString(): Int {
     return when (this) {
         PropertyType.FLAT -> R.string.property_type_flat
         PropertyType.HOMES -> R.string.property_type_homes
+        PropertyType.UNKNOWN -> R.string.property_type_empty
     }
 }
 

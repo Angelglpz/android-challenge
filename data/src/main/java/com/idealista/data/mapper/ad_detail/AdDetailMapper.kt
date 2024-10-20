@@ -8,7 +8,7 @@ import com.idealista.data.dto.ad_detail.MoreCharacteristicsDetailResponse
 import com.idealista.data.dto.ad_detail.MultimediaDetailResponse
 import com.idealista.data.dto.ad_detail.PriceInfoDetailResponse
 import com.idealista.data.dto.ad_detail.UbicationDetailResponse
-import com.idealista.domain.model.ad.PropertyType
+import com.idealista.data.mapper.ad.toPropertyTypeEnum
 import com.idealista.domain.model.ad_detail.AdDetail
 import com.idealista.domain.model.ad_detail.EnergyCertificationDetail
 import com.idealista.domain.model.ad_detail.EnergyValueDetail
@@ -17,14 +17,13 @@ import com.idealista.domain.model.ad_detail.MoreCharacteristicsDetail
 import com.idealista.domain.model.ad_detail.MultimediaDetail
 import com.idealista.domain.model.ad_detail.PriceInfoDetail
 import com.idealista.domain.model.ad_detail.UbicationDetail
-import java.util.Locale
 
 fun AdDetailResponse.toDomain(): AdDetail = AdDetail(
     id = this.id,
     price = this.price,
     priceInfo = this.priceInfo.toDomain(),
     operation = this.operation,
-    propertyType = PropertyType.valueOf(this.propertyType.uppercase(Locale.getDefault())),
+    propertyType = this.propertyType.toPropertyTypeEnum(),
     extendedPropertyType = this.extendedPropertyType,
     homeType = this.homeType,
     state = this.state,
