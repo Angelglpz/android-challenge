@@ -16,7 +16,9 @@ data class AdDetailVO(
     val exterior: Boolean,
     val floor: String,
     val commentary: String,
-    val basicCharacteristics: MoreCharacteristicsDetail
+    val basicCharacteristics: MoreCharacteristicsDetail,
+    val latitude: Float,
+    val longitude: Float
 )
 
 data class AdDetailImagesVO(

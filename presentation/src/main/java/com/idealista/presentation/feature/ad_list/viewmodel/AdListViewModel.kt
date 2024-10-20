@@ -32,7 +32,7 @@ class AdListViewModel @Inject constructor(
     var state by mutableStateOf(AdListScreenState())
         private set
 
-    init {
+    fun onResume() {
         viewModelScope.launch {
             retrieveData()
         }

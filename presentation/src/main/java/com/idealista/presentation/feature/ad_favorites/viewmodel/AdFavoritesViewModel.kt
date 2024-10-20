@@ -10,6 +10,7 @@ import com.idealista.domain.usecase.ad_favorite.GetAllFavoriteAdsUseCase
 import com.idealista.domain.usecase.ad_list.GetAdsListUseCase
 import com.idealista.presentation.feature.ad_favorites.mapper.AdFavoritesMapper
 import com.idealista.presentation.feature.ad_favorites.vo.AdFavoriteListVO
+import com.idealista.presentation.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.async
@@ -29,10 +30,10 @@ class AdFavoritesViewModel @Inject constructor(
     private val _adFavorites: MutableLiveData<List<AdFavoriteListVO>> = MutableLiveData()
     val adFavorites: MutableLiveData<List<AdFavoriteListVO>> = _adFavorites
 
-    private val _showLoading: MutableLiveData<Boolean> = MutableLiveData()
-    val showLoading: MutableLiveData<Boolean> = _showLoading
+    private val _showLoading: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val showLoading: SingleLiveEvent<Boolean> = _showLoading
 
-    init {
+    fun onResume() {
         viewModelScope.launch {
             retrieveData()
         }

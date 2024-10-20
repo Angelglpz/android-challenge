@@ -13,9 +13,11 @@ import com.idealista.domain.usecase.ad_favorite.GetAdDetailFavoriteUseCase
 import com.idealista.domain.usecase.ad_favorite.SaveAdFavoriteUseCase
 import com.idealista.presentation.feature.ad_detail.mapper.AdDetailMapper
 import com.idealista.presentation.feature.ad_detail.mapper.toVO
+import com.idealista.presentation.feature.ad_detail.util.Constants
 import com.idealista.presentation.feature.ad_detail.vo.AdDetailFavoriteVO
 import com.idealista.presentation.feature.ad_detail.vo.AdDetailVO
 import com.idealista.presentation.feature.navigation.ad_detail.AdDetailArgs
+import com.idealista.presentation.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -38,18 +40,21 @@ class AdDetailViewModel @Inject constructor(
     private val _favorite = MutableLiveData<AdDetailFavoriteVO>()
     val favorite: LiveData<AdDetailFavoriteVO> get() = _favorite
 
-    private val _showLoading = MutableLiveData<Boolean>()
-    val showLoading: LiveData<Boolean> get() = _showLoading
+    private val _showLoading = SingleLiveEvent<Boolean>()
+    val showLoading: SingleLiveEvent<Boolean> get() = _showLoading
 
-    private val _readMore = MutableLiveData<Boolean>()
-    val readMore: LiveData<Boolean> get() = _readMore
+    private val _readMore = SingleLiveEvent<Boolean>()
+    val readMore: SingleLiveEvent<Boolean> get() = _readMore
+
+    private val _navigateToMap = SingleLiveEvent<Pair<Float, Float>>()
+    val navigateToMap: SingleLiveEvent<Pair<Float, Float>> get() = _navigateToMap
 
 
     private val adDetailArgs: AdDetailArgs? by lazy {
-        savedStateHandle.get<AdDetailArgs>("adDetailArgs")
+        savedStateHandle.get<AdDetailArgs>(Constants.AD_DETAIL_ARGS)
     }
 
-    init {
+    fun onResume() {
         viewModelScope.launch {
             retrieveData()
         }
@@ -115,5 +120,12 @@ class AdDetailViewModel @Inject constructor(
 
     fun onReadMoreClicked(shouldReadMore: Boolean) {
         _readMore.value = shouldReadMore
+    }
+
+    fun onLocationClicked() {
+        _navigateToMap.value = Pair(
+            _adDetail.value?.latitude ?: 0f,
+            _adDetail.value?.longitude ?: 0f
+        )
     }
 }
