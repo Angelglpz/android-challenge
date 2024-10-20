@@ -54,9 +54,6 @@ dependencies {
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.mockwebserver)
-    androidTestImplementation(libs.hilt.android.testing)
     kaptAndroidTest(libs.hilt.android.compiler)
     androidTestImplementation(libs.mockk)
     androidTestImplementation(libs.kotlinx.coroutines.test)
@@ -89,5 +86,4 @@ dependencies {
     // Google Maps
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
-
 }

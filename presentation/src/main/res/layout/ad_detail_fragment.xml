@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
-                    android:src="@drawable/baseline_arrow_back_24"
+                    android:src="@drawable/fill_arrow_back_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="?android:colorBackground" />
@@ -91,7 +91,7 @@
                     android:layout_height="@dimen/dimen_24dp"
                     android:layout_marginTop="@dimen/dimen_8dp"
                     android:backgroundTint="@android:color/transparent"
-                    android:src="@drawable/baseline_location_pin_24"
+                    android:src="@drawable/fill_location_pin_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rooms_text"
                     app:tint="?android:colorPrimary" />
