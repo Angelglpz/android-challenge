@@ -33,6 +33,9 @@ class AdFavoritesViewModel @Inject constructor(
     private val _showLoading: SingleLiveEvent<Boolean> = SingleLiveEvent()
     val showLoading: SingleLiveEvent<Boolean> = _showLoading
 
+    private val _showError: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val showError: SingleLiveEvent<Boolean> = _showError
+
     fun onResume() {
         viewModelScope.launch {
             retrieveData()
@@ -53,7 +56,8 @@ class AdFavoritesViewModel @Inject constructor(
                 adList = it
             },
             onFailure = {
-                // Handle error
+                _showError.postValue(true)
+                _showLoading.postValue(false)
             }
         )
 

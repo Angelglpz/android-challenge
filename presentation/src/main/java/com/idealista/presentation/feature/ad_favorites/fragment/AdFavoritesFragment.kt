@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import com.idealista.presentation.R
 import com.idealista.presentation.databinding.AdFavoritesListFragmentBinding
 import com.idealista.presentation.feature.ad_favorites.adapter.AdFavoritesAdapter
 import com.idealista.presentation.feature.ad_favorites.viewmodel.AdFavoritesViewModel
@@ -53,6 +55,10 @@ class AdFavoritesFragment : Fragment() {
             } else {
                 binding.loadingView.root.gone()
             }
+        }
+
+        viewModel.showError.observe(viewLifecycleOwner) {
+            Snackbar.make(binding.root, R.string.error_message, Snackbar.LENGTH_SHORT).show()
         }
     }
 
