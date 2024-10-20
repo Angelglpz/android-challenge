@@ -3,11 +3,14 @@ package com.idealista.data.repository
 import com.idealista.data.datasource.IdealistaChallengeDatabaseDataSource
 import com.idealista.domain.model.ad_detail.AdFavorite
 import com.idealista.domain.repository.IdealistaChallengeDatabaseRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 internal class IdealistaChallengeDatabaseRepositoryImpl @Inject constructor(
-    private val databaseDataSource: IdealistaChallengeDatabaseDataSource
+    private val databaseDataSource: IdealistaChallengeDatabaseDataSource,
+    private val ioDispatcher: CoroutineDispatcher
 ) : IdealistaChallengeDatabaseRepository {
 
     override fun getAllFavoritesAds(): Flow<List<AdFavorite>> {
@@ -19,10 +22,14 @@ internal class IdealistaChallengeDatabaseRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertFavoriteAd(ad: AdFavorite) {
-        databaseDataSource.insertFavoriteAd(ad)
+        withContext(ioDispatcher) {
+            databaseDataSource.insertFavoriteAd(ad)
+        }
     }
 
     override suspend fun deleteFavoriteAdById(id: Int) {
-        databaseDataSource.deleteAdFavoriteById(id)
+        withContext(ioDispatcher) {
+            databaseDataSource.deleteAdFavoriteById(id)
+        }
     }
 }
