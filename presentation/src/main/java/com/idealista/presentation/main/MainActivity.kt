@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.apply {
             menu.findItem(R.id.adListFragment).icon = ResourcesCompat.getDrawable(
                 resources,
-                R.drawable.baseline_home_24,
+                R.drawable.fill_home_24,
                 null
             )
             menu.findItem(R.id.adFavoritesFragment).icon = ResourcesCompat.getDrawable(

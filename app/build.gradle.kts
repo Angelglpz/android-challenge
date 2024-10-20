@@ -52,10 +52,6 @@ android {
     kapt {
         correctErrorTypes = true
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -65,17 +61,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    // Jetpack Compose integration
-    implementation(libs.androidx.navigation.compose)
-
-    // Views/Fragments integration
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
 
     // DI
     implementation(libs.hilt.android)
