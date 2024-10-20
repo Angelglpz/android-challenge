@@ -41,6 +41,11 @@ class AdDetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setObservers()
@@ -57,6 +62,9 @@ class AdDetailFragment : Fragment() {
         }
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.locationImageButton.setOnClickListener {
+            viewModel.onLocationClicked()
         }
     }
 
@@ -76,7 +84,7 @@ class AdDetailFragment : Fragment() {
                 sizeText.text = getString(R.string.size, ad.size.toDouble().formatNoFraction())
                 val outerInnerText =
                     if (ad.exterior) getString(R.string.outer) else getString(R.string.inner)
-                val floor = if (ad.floor == "1") getString(R.string.ground_floor) else ad.floor
+                val floor = if (ad.floor == "0") getString(R.string.ground_floor) else ad.floor
                 floorInfoText.text = getString(R.string.floor_info, floor, outerInnerText)
                 propertyCommentTitleText.text = getString(R.string.property_comment_title)
                 propertyCommentReadMoreText.text = getString(R.string.read_more)
@@ -88,7 +96,7 @@ class AdDetailFragment : Fragment() {
         }
 
         viewModel.favorite.observe(viewLifecycleOwner) {
-            isFavorite = it?.isFavorite ?: false
+            isFavorite = it.isFavorite
             manageFavoriteButton(it)
         }
 
@@ -113,7 +121,14 @@ class AdDetailFragment : Fragment() {
                 }
 
             }
+        }
 
+        viewModel.navigateToMap.observe(viewLifecycleOwner) { coordinates ->
+            val action = AdDetailFragmentDirections.actionAdDetailFragmentToAdDetailMapFragment(
+                latitude = coordinates.first,
+                longitude = coordinates.second
+            )
+            findNavController().navigate(action)
         }
     }
 
@@ -159,6 +174,7 @@ class AdDetailFragment : Fragment() {
             }
             favoriteText.apply {
                 if (adDetailFavoriteVO.isFavorite) {
+                    setTextAppearance(R.style.BodySmallBold)
                     setTextColor(
                         MaterialColors.getColor(
                             requireContext(),
@@ -167,13 +183,7 @@ class AdDetailFragment : Fragment() {
                         )
                     )
                 } else {
-                    setTextColor(
-                        MaterialColors.getColor(
-                            requireContext(),
-                            MaterialR.attr.titleTextColor,
-                            Color.BLACK
-                        )
-                    )
+                    setTextAppearance(R.style.BodySmallBold)
                 }
             }
 

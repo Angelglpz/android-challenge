@@ -5,8 +5,6 @@ plugins {
     kotlin("kapt")
     alias(libs.plugins.androidx.navigation.safeargs)
     id("kotlin-parcelize")
-
-
 }
 
 android {
@@ -38,12 +36,10 @@ android {
 
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
-    }
-    buildFeatures {
-        viewBinding = true
     }
 }
 
@@ -68,8 +64,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    implementation(libs.androidx.core.splashscreen)
-
     // Views/Fragments integration
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
@@ -83,4 +77,9 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
     implementation(libs.coil)
+
+    // Google Maps
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
+
 }

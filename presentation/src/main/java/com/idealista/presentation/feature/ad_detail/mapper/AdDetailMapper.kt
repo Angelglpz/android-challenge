@@ -29,7 +29,9 @@ object AdDetailMapper {
             exterior = ad.moreCharacteristics.exterior,
             floor = ad.moreCharacteristics.floor,
             commentary = ad.propertyComment,
-            basicCharacteristics = ad.moreCharacteristics
+            basicCharacteristics = ad.moreCharacteristics,
+            latitude = ad.ubication.latitude,
+            longitude = ad.ubication.longitude
         )
     }
 
