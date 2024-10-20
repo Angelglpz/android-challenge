@@ -6,6 +6,6 @@ import com.idealista.data.dao.AdFavoritesDao
 import com.idealista.data.entity.AdFavoriteEntity
 
 @Database(entities = [AdFavoriteEntity::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
+internal abstract class AppDatabase : RoomDatabase() {
     abstract fun adFavoriteDao(): AdFavoritesDao
 }
