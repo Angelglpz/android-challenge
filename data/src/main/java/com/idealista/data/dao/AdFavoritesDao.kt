@@ -8,7 +8,7 @@ import com.idealista.data.entity.AdFavoriteEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface AdFavoritesDao {
+internal interface AdFavoritesDao {
 
     @Query("SELECT * FROM ad_favorite")
     fun getAllFavorites(): Flow<List<AdFavoriteEntity>>

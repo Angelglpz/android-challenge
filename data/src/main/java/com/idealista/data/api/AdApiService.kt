@@ -4,7 +4,7 @@ import com.idealista.data.dto.ad.AdResponse
 import com.idealista.data.dto.ad_detail.AdDetailResponse
 import retrofit2.http.GET
 
-interface AdApiService {
+internal interface AdApiService {
     @GET("list.json")
     suspend fun getAds(): List<AdResponse>
 

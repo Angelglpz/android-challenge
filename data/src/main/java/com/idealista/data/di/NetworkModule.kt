@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+internal object NetworkModule {
 
     @Provides
     @Singleton
@@ -31,7 +31,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun providesAdApiService(retrofit: Retrofit): AdApiService {
+    fun providesAdApiService(retrofit: Retrofit): AdApiService {
         return retrofit.create(AdApiService::class.java)
     }
 }
