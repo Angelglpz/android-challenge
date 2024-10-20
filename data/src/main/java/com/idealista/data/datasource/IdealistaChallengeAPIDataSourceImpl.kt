@@ -7,7 +7,7 @@ import com.idealista.domain.model.ad.Ad
 import com.idealista.domain.model.ad_detail.AdDetail
 import javax.inject.Inject
 
-class IdealistaChallengeAPIDataSourceImpl @Inject constructor(
+internal class IdealistaChallengeAPIDataSourceImpl @Inject constructor(
     private val adApiService: AdApiService
 ) : IdealistaChallengeAPIDataSource {
 

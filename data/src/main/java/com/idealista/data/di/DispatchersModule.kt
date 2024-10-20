@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DispatchersModule {
+internal object DispatchersModule {
 
     @Provides
     fun providesDispatchers() = Dispatchers.IO
