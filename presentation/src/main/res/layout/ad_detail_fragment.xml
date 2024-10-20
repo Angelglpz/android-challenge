@@ -85,6 +85,17 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Calle prueba" />
 
+                <ImageButton
+                    android:id="@+id/location_image_button"
+                    android:layout_width="@dimen/dimen_24dp"
+                    android:layout_height="@dimen/dimen_24dp"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/baseline_location_pin_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rooms_text"
+                    app:tint="?android:colorPrimary" />
+
                 <TextView
                     android:id="@+id/district_text"
                     style="@style/BodyMedium"
@@ -186,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_24dp"
                     app:layout_constraintStart_toStartOf="@+id/rooms_text"
-                    app:layout_constraintTop_toBottomOf="@+id/size_text"
+                    app:layout_constraintTop_toBottomOf="@+id/location_image_button"
                     tools:text="Comentario del anunciante" />
 
                 <TextView

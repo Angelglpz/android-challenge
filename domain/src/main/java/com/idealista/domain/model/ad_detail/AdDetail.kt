@@ -36,8 +36,8 @@ data class ImageDetail(
 )
 
 data class UbicationDetail(
-    val latitude: Double,
-    val longitude: Double
+    val latitude: Float,
+    val longitude: Float
 )
 
 data class MoreCharacteristicsDetail(
